@@ -12,7 +12,7 @@ model User {
   email         String    @unique
   name          String?
   emailVerified Boolean
-  image         String?   @db.Text
+  image         String?
   createdAt     DateTime
   updatedAt     DateTime
   sessions      Session[]
@@ -20,6 +20,8 @@ model User {
 
   @@map("user")
 }
+
+
 
 model Session {
   id        String   @id

@@ -1,10 +1,11 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { db } from "../prisma";
+import { nextCookies } from 'better-auth/next-js';
 
 export const auth = betterAuth({
   database: prismaAdapter(db, {
-    provider: "mysql", // or "mysql", "postgresql", ...etc
+    provider: "mysql",
   }),
   emailAndPassword: {
     enabled: true,
@@ -27,4 +28,5 @@ export const auth = betterAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     },
   },
+  plugins: [nextCookies()]
 });
