@@ -7,6 +7,7 @@ import { signIn } from "@/lib/auth/actions";
 import Link from "next/link";
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
+import SignInSocial from './sign-in-sosial';
 
 export default function LoginForm() {
   const initialState = { errorMessage: "" };
@@ -35,14 +36,14 @@ export default function LoginForm() {
           </div>
 
           <div className="mt-6 grid grid-cols-2 gap-3">
-            <Button type="button" variant="outline">
+            <SignInSocial provider="google">
               <Icons.google />
               <span>Google</span>
-            </Button>
-            <Button type="button" variant="outline">
+            </SignInSocial>
+            <SignInSocial provider='github'>
               <Icons.gitHub />
               <span>GitHub</span>
-            </Button>
+            </SignInSocial>
           </div>
 
           <hr className="my-4 border-dashed" />
@@ -62,10 +63,10 @@ export default function LoginForm() {
                 </Label>
                 <Button asChild variant="link" size="sm">
                   <Link
-                    href="#"
+                    href="/login/forgot-account"
                     className="link intent-info variant-ghost text-sm"
                   >
-                    Forgot your Password ?
+                    Forgot your Account ?
                   </Link>
                 </Button>
               </div>
